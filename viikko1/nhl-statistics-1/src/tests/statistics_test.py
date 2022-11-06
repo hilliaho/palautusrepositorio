@@ -31,27 +31,27 @@ class TestStatistics(unittest.TestCase):
         self.assertAlmostEqual(player_none, None)
 
     def test_team_returns_list(self):
-        edm_joukkue = self.statistics.team("EDM")
-        joukkue_nimet = list(map(lambda pelaaja: pelaaja.name, edm_joukkue))
-        self.assertAlmostEqual(joukkue_nimet[0], "Semenko")
+        edm_team = self.statistics.team("EDM")
+        team_names = list(map(lambda player: player.name, edm_team))
+        self.assertAlmostEqual(team_names[0], "Semenko")
 
     def test_top_returns_top_players(self):
-        top_kolme_nimet = list(
-            map(lambda pelaaja: pelaaja.name, self.statistics.top(2)))
+        top_3 = list(
+            map(lambda player: player.name, self.statistics.top(2)))
         self.assertAlmostEqual(
-            top_kolme_nimet, ['Gretzky', 'Lemieux', 'Yzerman'])
+            top_3, ['Gretzky', 'Lemieux', 'Yzerman'])
 
     def test_top_sort_by_goals(self):
-        top_kolme_nimet = list(
-            map(lambda pelaaja: pelaaja.name, self.statistics.top(2, 2)))
-        print(top_kolme_nimet)
+        top_3 = list(
+            map(lambda player: player.name, self.statistics.top(2, 2)))
+        print(top_3)
         self.assertAlmostEqual(
-            top_kolme_nimet, ['Lemieux', 'Yzerman', 'Kurri'])
+            top_3, ['Lemieux', 'Yzerman', 'Kurri'])
 
     def test_top_sort_by_assists(self):
-        top_kolme_nimet = list(
-            map(lambda pelaaja: pelaaja.name, self.statistics.top(2, 3)))
-        print(top_kolme_nimet)
+        top_3 = list(
+            map(lambda player: player.name, self.statistics.top(2, 3)))
+        print(top_3)
         self.assertAlmostEqual(
-            top_kolme_nimet, ['Gretzky', 'Yzerman', 'Lemieux']
+            top_3, ['Gretzky', 'Yzerman', 'Lemieux']
         )
